@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "source": "data/sample_security_events.csv",
+    "events_processed": 16,
+    "threshold": 5,
+    "window_minutes": 10,
+    "synthetic_data": true
+  },
+  "alerts": [
+    {
+      "rule": "repeated_failed_logins",
+      "severity": "medium",
+      "hostname": "LAB-PC-01",
+      "source_ip": "192.0.2.10",
+      "username": "alex",
+      "event_time": "2026-11-10T12:04:00+00:00",
+      "failure_count": 5,
+      "window_minutes": 10,
+      "reason": "5 failed logins inside 10 minutes",
+      "recommended_action": "Validate source and user activity; inspect nearby logs; check for account lockout or spraying."
+    },
+    {
+      "rule": "failed_logins_followed_by_success",
+      "severity": "high",
+      "hostname": "LAB-PC-01",
+      "source_ip": "192.0.2.10",
+      "username": "alex",
+      "event_time": "2026-11-10T12:06:00+00:00",
+      "failure_count": 6,
+      "window_minutes": 10,
+      "reason": "Successful login following 6 recent failures",
+      "recommended_action": "Confirm login legitimacy with owner; review session activity and endpoint evidence; escalate per IR playbook."
+    },
+    {
+      "rule": "repeated_failed_logins",
+      "severity": "medium",
+      "hostname": "LAB-PC-02",
+      "source_ip": "192.0.2.50",
+      "username": "sam",
+      "event_time": "2026-11-10T12:29:00+00:00",
+      "failure_count": 5,
+      "window_minutes": 10,
+      "reason": "5 failed logins inside 10 minutes",
+      "recommended_action": "Validate source and user activity; inspect nearby logs; check for account lockout or spraying."
+    }
+  ]
+}
